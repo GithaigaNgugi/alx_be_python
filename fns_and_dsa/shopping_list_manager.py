@@ -1,51 +1,60 @@
 # shopping_list_manager.py
 
+# Initialize an empty shopping list
+shopping_list = []
+
 def display_menu():
+    """Display the main menu with options."""
     print("\n--- Shopping List Manager ---")
-    print("1. Add item")
-    print("2. Remove item")
-    print("3. View list")
+    print("1. Add an item")
+    print("2. Remove an item")
+    print("3. View shopping list")
     print("4. Exit")
 
-def add_item(shopping_list):
-    item = input("Enter the item to add: ").strip()
-    shopping_list.append(item)
-    print(f"'{item}' has been added to your shopping list.")
+def add_item():
+    """Prompt the user to add an item to the shopping list."""
+    item = input("Enter the name of the item to add: ").strip()
+    if item:
+        shopping_list.append(item)
+        print(f"'{item}' has been added to the list.")
+    else:
+        print("Item name cannot be empty.")
 
-def remove_item(shopping_list):
-    item = input("Enter the item to remove: ").strip()
+def remove_item():
+    """Prompt the user to remove an item from the shopping list."""
+    item = input("Enter the name of the item to remove: ").strip()
     if item in shopping_list:
         shopping_list.remove(item)
-        print(f"'{item}' has been removed from your shopping list.")
+        print(f"'{item}' has been removed from the list.")
     else:
-        print(f"'{item}' is not in the shopping list.")
+        print(f"'{item}' not found in the shopping list.")
 
-def view_list(shopping_list):
-    if not shopping_list:
-        print("Your shopping list is empty.")
+def view_list():
+    """Display all items currently in the shopping list."""
+    if shopping_list:
+        print("\nCurrent Shopping List:")
+        for idx, item in enumerate(shopping_list, 1):
+            print(f"{idx}. {item}")
     else:
-        print("\nYour current shopping list:")
-        for i, item in enumerate(shopping_list, 1):
-            print(f"{i}. {item}")
+        print("\nYour shopping list is empty.")
 
-def main():
-    shopping_list = []
-    
+def shopping_list_manager():
+    """Main function to run the shopping list manager."""
     while True:
         display_menu()
-        choice = input("Choose an option (1-4): ").strip()
+        choice = input("\nChoose an option (1-4): ").strip()
         
         if choice == '1':
-            add_item(shopping_list)
+            add_item()
         elif choice == '2':
-            remove_item(shopping_list)
+            remove_item()
         elif choice == '3':
-            view_list(shopping_list)
+            view_list()
         elif choice == '4':
             print("Exiting the Shopping List Manager. Goodbye!")
             break
         else:
-            print("Invalid choice, please select a valid option.")
+            print("Invalid choice. Please select a valid option.")
 
 if __name__ == "__main__":
-    main()
+    shopping_list_manager()
