@@ -16,3 +16,17 @@ class Book:
     def __repr__(self) -> str:
         """Return an official string representation of the book."""
         return f"Book('{self.title}', '{self.author}', {self.year})"
+
+# Optional: Testing the implementation of magic methods
+if __name__ == "__main__":
+    # Creating an instance of Book
+    my_book = Book("1984", "George Orwell", 1949)
+
+    # Check __str__ method
+    print("String Representation:", my_book)  # Expected: 1984 by George Orwell, published in 1949
+
+    # Check __repr__ method
+    print("Official Representation:", repr(my_book))  # Expected: Book('1984', 'George Orwell', 1949)
+
+    # Delete the book instance to trigger __del__
+    del my_book
