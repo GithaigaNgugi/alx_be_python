@@ -71,9 +71,3 @@ class Library:
         else:
             for book in available_books:
                 print(book)
-
-def check_file_exists(file_path):
-    """Checks if the file exists and is not empty."""
-    if os.path.exists(file_path) and os.path.getsize(file_path) > 0:
-        return True
-    return False
